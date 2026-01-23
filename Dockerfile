@@ -6,9 +6,9 @@ WORKDIR /usr/src/app
 
 # Install OpenJDK 17 JRE 
 RUN apt-get update && \
-    apt-get install -y java && \
-    apt-get clean;
-
+    apt-get install -y --no-install-recommends openjdk-17-jre-headless && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 # Install Python requirements [cite: 2]
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
