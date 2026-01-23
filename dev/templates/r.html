@@ -1,0 +1,130 @@
+{% extends "b.html" %}
+
+{% block content %}
+<style>
+    .auth-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh; /* Slightly taller to accommodate more fields */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .auth-card {
+        background: #ffffff;
+        padding: 2rem 2.5rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+        border: 1px solid #e1e4e8;
+    }
+
+    .auth-card h1 {
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+        font-size: 1.8rem;
+        text-align: center;
+        border-bottom: 2px solid #f0f2f5;
+        padding-bottom: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+        color: #444;
+    }
+
+    /* Target the Flask-WTF inputs */
+    input[type="text"], 
+    input[type="email"], 
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccd0d5;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 1rem;
+        transition: all 0.2s ease-in-out;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        background-color: #27ae60; /* Green for "Create Account/Register" */
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 1.5rem;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #219150;
+    }
+
+    /* Small link for users who already have an account */
+    .auth-footer {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .auth-footer a {
+        color: #3498db;
+        text-decoration: none;
+    }
+</style>
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <form method="POST" action="{{ url_for('auth.register_page') }}">
+            <h1>Create Account</h1>
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.full_name.label }}
+                {{ form.full_name(placeholder="Enter your full name") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(placeholder="Email address") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(placeholder="Create password") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.c_password.label }}
+                {{ form.c_password(placeholder="Confirm your password") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.submit() }}
+            </div>
+
+            <div class="auth-footer">
+                Already have an account? <a href="{{ url_for('auth.login_page') }}">Login here</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

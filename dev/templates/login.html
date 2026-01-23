@@ -1,0 +1,23 @@
+{% extends "b.html" %}
+
+{% block content %}
+	<form method="POST" Action="{{ url_for('auth.login_page') }}" >
+        <!-- flask form -->
+        <h1>Login</h1>
+        {{ form.hidden_tag() }}
+
+         <p>
+        {{ form.email.label }}<br>
+        {{ form.email(size=30) }}<br>
+        </p>
+        <p>
+        {{ form.password.label }}<br>
+        {{ form.password(size=30) }}</br>
+        </p>
+
+        <p>
+        {{ form.submit() }}<br>
+        </p>
+    </form> 
+{% endblock %}
+
