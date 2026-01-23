@@ -23,4 +23,4 @@ ENV PATH $JAVA_HOME/bin:$PATH
 # Expose the port 
 
 # Corrected Command to run your Flask application 
-CMD ["gunicorn", "-b", "0.0.0.0:$PORT", "main:app"]
+CMD gunicorn main:app --bind 0.0.0.0:$PORT
