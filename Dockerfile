@@ -23,4 +23,4 @@ ENV PATH $JAVA_HOME/bin:$PATH
 # Expose the port 
 
 # Corrected Command to run your Flask application 
-CMD gunicorn main:app --bind 0.0.0.0:$PORT
+CMD gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 2
