@@ -41,7 +41,7 @@ def home_page():
             return send_file(csv_output, as_attachment=True, download_name=new_filename, mimetype="text/to_csv")
 
         except Exception as e:
-            return f"An error occured : {str(e)}", 500
+            return f"An error occured", 500
 
         #------------------------------------------------------------
     return render_template("i.html") 
