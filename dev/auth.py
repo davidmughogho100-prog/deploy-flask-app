@@ -35,6 +35,8 @@ def register_page():
             # flash suscesfull acount creation
             flash("account sucessfully created!", category="success")
             return redirect(url_for("auth.login_page"))
+        else:
+            flash("passwords do not match", category="error")
 
     return render_template("r.html", form=form)
 
