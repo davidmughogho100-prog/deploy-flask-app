@@ -38,7 +38,7 @@ def register_page():
         else:
             flash("passwords do not match", category="error")
 
-    return render_template("r.html", form=form)
+    return render_template("register.html", form=form)
 
 
 @auth.route("/login", methods=["GET", "POST"])
@@ -50,9 +50,7 @@ def login_page():
     if form.validate_on_submit():
         # grab user data first
         email = form.email.data
-        password = form.password.data
-        # check if the email already exists
-       # check the database if it has this user data
+        password = form.password.data 
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
             # login the user and set their session
@@ -62,8 +60,8 @@ def login_page():
             return redirect(url_for("view.home_page"))
 
         else:
-            flash("incorect username or password", category="error")
-    return render_template("l.html", form=form)
+            flash("invalid credantials!", category="error")
+    return render_template("login.html", form=form)
 
 
 

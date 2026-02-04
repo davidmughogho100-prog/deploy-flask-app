@@ -44,7 +44,7 @@ def home_page():
             return f"An error occured", 500
 
         #------------------------------------------------------------
-    return render_template("i.html") 
+    return render_template("index.html") 
 
 @view.route("/logout")
 @login_required
